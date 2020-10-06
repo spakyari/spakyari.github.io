@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Latitude</title>
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <nav>
+        <ul class = "large_nav">
+            <li style="float:left"> <a  class="alti-logo" href="#"> Altitude </a></li>
+        
+            <li> <a href="data.html">Data</a> </li>
+            <li> <a href="comparison.html">Comparison</a> </li>
+
+            <li class="full dropdown">
+
+                <a href="#" class="dropbtn"><i>Plots ˅</i>
+                </a>
+                <div class="dropdown-content">
+                    <a href="maxtemp.html">s. Max Temperature</a>
+                    <a href="humidity.html">vs. Humidity</a>
+                    <a href="cloudiness.html">vs. Cloudiness</a>
+                    <a href="windspeed.html">vs. Wind Speed</a>
+                </div>
+            </li>
+
+            <div class="mini dropdown">
+
+                <a href="#" class="dropbtn"><i class="fa fa-bars"></i>
+                    </a>
+
+                <div class="dropdown-content">
+                    <a href="maxtemp.html">s. Max Temperature</a>
+                    <a href="humidity.html">vs. Humidity</a>
+                    <a href="cloudiness.html">vs. Cloudiness</a>
+                    <a href="windspeed.html">vs. Wind Speed</a>
+                    <a href="data.html">Data</a> 
+                    <a href="comparison.html">Comparison</a>
+                </div>
+            </div>
+
+        </ul>   
+
+    </nav>
+
+
+
+    <ul class ="contents">
+        <li>
+            <div class ="summary">
+        
+                <h1 class="alti"> Summary: Latitude vs. X</h1><br>
+
+                <a target="_blank" href="Resources/assets/images/Fig1.png">
+                    <img class="LargeThumb" src="Resources/assets/images/Fig1.png" alt = "scatter plot">
+                </a>
+
+                <P>The purpose of this project was to analyze how weather changes as you get closer to the equator.  To accomplish this analysis, we first pulled data from the OpenWeatherMap API to assemble a dataset on over 500 cities.</P><br>
+                <P>After assembling the dataset, we used Matplotlib to plot various aspects of the weather vs. latitude. Factors we looked at include temperatures, cloudiness, wind speed, and humidity. This site provides the source data and visualizations created as part of the analysis, as well as explanations and descriptions of any trends and correlations witnessed.</P><br>
+            </div>
+        </li>
+
+        
+        <li>
+                <div class = "thumbs">
+                    <h2>Visualizations</h2></br>
+
+                        <div class="responsive">
+                            <div class="gallery">
+                              <a target="_self" href="maxtemp.html">
+                                <img src="Resources/assets/images/Fig1.png" alt="Fig" width="600" height="400">
+                              </a>
+                            </div>
+                        </div>
+
+                        <div class="responsive">
+                            <div class="gallery">
+                              <a target="_self" href="humidity.html">
+                                <img src="Resources/assets/images/Fig2.png" alt="Fig" width="600" height="400">
+                              </a>
+                            </div>
+                        </div>
+
+                        <div class="responsive">
+                            <div class="gallery">
+                              <a target="_self" href="cloudiness.html">
+                                <img src="Resources/assets/images/Fig3.png" alt="Fig" width="600" height="400">
+                              </a>
+                            </div>
+                        </div>
+
+                        <div class="responsive">
+                            <div class="gallery">
+                              <a target="_self" href="windspeed.html">
+                                <img src="Resources/assets/images/Fig4.png" alt="Fig" width="600" height="400">
+                              </a>
+                            </div>
+                        </div>
+
+                    
+
+                </div>
+        </li>
+        
+    </ul>   
+
+<footer>
+    © Copyright Coding Bootcamp 2020
+</footer>
+
+</body>
+</html>
