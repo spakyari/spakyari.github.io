@@ -123,11 +123,39 @@ function refreshMap(myMap, API){
             radius: 1000 * 2** magnitude
           }).bindPopup(`<h1>" ${title} "</h1><br> <h2> Magnitude ${magnitude}`).addTo(myMap);
 
+
     })
 
   })
+  
 
 }
+
+// L.Control.textbox = L.Control.extend({
+//   onAdd: function(mapText) {
+    
+//   var text = L.DomUtil.create('div');
+//   text.id = "info_text";
+//   text.innerHTML = "<strong>text here</strong>"
+//   return text;
+//   },
+
+//   onRemove: function(mapText) {
+//     // Nothing to do here
+//   }
+// });
+// L.control.textbox = function(opts) { return new L.Control.textbox(opts);}
+// L.control.textbox({ position: 'bottomleft' }).addTo(myMap);
+
+// // Adding tile layer
+// function refreshMap(myMap, API){
+
+//   myMap.eachLayer(function (layer) {
+      
+//     myMap.removeLayer(layer)
+// });
+
+
 
 
 // var legend = L.control({position: 'bottomright'});
