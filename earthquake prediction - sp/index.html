@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link
+            rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+            integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+            crossorigin="anonymous"
+        >
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>"Earthquake Prediction"</title>
+    </head>
+    <body>
+
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="index.html">Earthquake Prediction</a>
+            <button
+                class="navbar-toggler"
+                type="button"
+                data-toggle="collapse"
+                data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+            >
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="JavaScript/earthquakes.html" target="_blank">Predictions</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://public.tableau.com/profile/scott.leslie8826#!/vizhome/QuakeTest/Project3?publish=yes" target="_blank">Tableau Public</a>
+                    </li>
+                    
+                </ul>
+                
+            </div>
+        </nav>
+
+        <div class="container">
+            <div class="row">
+              <div class="col-lg-8">
+                <div class="box">
+                  <p class="h1"><strong>Project 3 by the Three Quakeman</strong></p>
+                  <hr>
+                  
+                  <p class="h4"><strong>Visualizer Quakeman: Scott</strong></p>
+                  <img id="landingimg" src= "Images/image.png" alt="Generic placeholder image" style="width:800px;height:600px;">>
+                    
+                  <p>Your Project 3 team has designed and implemented a visualization engine that ingests Summary and Detailed Earthquake data that has been processed by our data preparation engine. 
+                     The Visualizer leverages the power of Tableau to offer interactive maps and charts that enable the Geologist to select an earthquake and set of earthquakes and see the pattern of seismic events leading up to the quake in question.  
+                     This three dimensional chart shows a timeline, magnitude of the earthquake and a selectable metric at the same time and an intuitive and insightful visual.  
+                     The interactive maps places all the events geographically color coded by the earthquake and its related leading events.
+
+                  <p>The visualizer receives data from the pre-processor which ingests USGS raw data on earthquakes in CA and NV for the last 50 years.  
+                     The parameters are set to look for a set of events leading up to an earthquake 50 km in distance and up to 1 year before each earthquake of magnitude 5.5 (Big Quakes) and above.  
+                     It builds two tables, a summary table that lists each of the earthquakes with measurements from the USGS and the summary of events by magnitude range (every 0.5 on the Richter scale).  
+                     This table only has a few hundred rows.  The second table lists each earthquake and all its leading events joined by the earthquake in questions USGS ID.  
+                     This table has about 150,000 rows which Tableau handles without a sweat.  Over 10 Million iterations of calculations are done each time we run the pre-processing engine.<p>
+                    
+                    </p>
+                  <p></p>
+                    
+                  <p class="h4"><strong>Data Architect and Part Time Geologist Quakeman: Saeed</strong></p>
+
+                  <img id="landingimg" src= "Images/image (1).png" alt="Generic placeholder image" style="width:800px;height:600px;">>
+                    
+                  <p>For us to set up and properly format our data to feed into a machine learning algorithm we first had to download 50 years’ worth of earthquake data from the USGS site as CSV’s. 
+                      We then imported all our data into a SQLite database and used five different libraries to create our features. 
+                      From there all that was left to do was use import our data into Jupyter’s library “skit learn” and create our machine learning model.
+                    </p>
+                    <p> On the back end our flask app takes the USGS API and formats it for us to grab the last 30 days, the next 30 days, and the output of our machine learning for any user inputted date. 
+                      On the front end the flask app pushes that data to a bubble map.  
+                    </p>
+                  <p></p>
+                  
+                  <p class="h4"><strong>Application and Integration Quakeman: Trevor</strong></p>
+                  <img id="landingimg" src= "Images/Screenshot (46).png" alt="Generic placeholder image" style="width:800px;height:600px;">>
+                    
+                  <p>Our JavaScript displays three different maps, all with data imported from our flask app. 
+                      In the top right corner is a calendar dropdown which will allow a user to select any day, month, or year from the last 50 years and display earthquake data from that day in the form of a bubble map. 
+                      The map’s show from left to right, the past 30 days, our predicted earthquake magnitude and locations in the next 30 days, and what actually happened 30 days from that date. 
+                      Each bubble will show the magnitude of an earthquake and the location. The bubbles size is based off the size of the earthquakes magnitude. </p>
+                  <p></p>
+                  
+ 
+                </div>
+              </div>
+            </div>
+          </div>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    </body>
+</html>
+
+
+    </body>
