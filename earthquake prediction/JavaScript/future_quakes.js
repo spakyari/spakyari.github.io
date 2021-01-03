@@ -3,6 +3,19 @@ var myMap1 = L.map("mapid1", {
   zoom: 6
 });
 
+var myMap2 = L.map("mapid2", {
+  center: [37, -118],
+  zoom: 6
+});
+
+var myMap3 = L.map("mapid3", {
+  center: [37, -118],
+  zoom: 6
+});
+
+url = ['/api/v1.0/past30days/','/api/v1.0/predict/','/api/v1.0/target/']
+map = [myMap1, myMap2, myMap3]
+
 var today = new Date();
 var myDate
 
@@ -18,7 +31,9 @@ function mapTime(){
   myDate = yyyy + '-' + mm + '-' + dd + ' ' + hours + ':' + min + ':' + sec;
 }
 
-refreshMap()
+refreshMap(map[0], url[0])
+refreshMap(map[1], url[1])
+refreshMap(map[2], url[2])
 
 dropdown = d3.select("#quakeDate")
 
@@ -30,7 +45,9 @@ dropdown.on("change", function(){
   console.log(myDate)
   
   
-  refreshMap()
+  refreshMap(map[0],url[0])
+  refreshMap(map[1],url[1])
+  refreshMap(map[2],url[2])
 
 })
 
@@ -52,11 +69,11 @@ function chooseColor(depth) {
 }
 
 // Adding tile layer
-function refreshMap(){
+function refreshMap(myMap, API){
 
-  myMap1.eachLayer(function (layer) {
+  myMap.eachLayer(function (layer) {
       
-    myMap1.removeLayer(layer)
+    myMap.removeLayer(layer)
 });
 
   
@@ -67,45 +84,51 @@ function refreshMap(){
     zoomOffset: -1,
     id: "mapbox/streets-v11",
     accessToken: API_KEY
-  }).addTo(myMap1);
+  }).addTo(myMap);
 
 
 
   // Use this link to get the geojson data.
-  var link = `https://predictquake.herokuapp.com//api/v1.0/target/${myDate}`;
+  var link = `https://predictquake.herokuapp.com${API}${myDate}`;
 
   console.log(link)
   // Function that will determine the color based on the depth of an earthquake
 
 
-
+  console.log('before loop')
   // Grabbing our GeoJSON data..
   d3.json(link, function(data) {
-  // Creating a GeoJSON layer with the retrieved data
-  L.geoJson(data,{
-      pointToLayer: function(features, coordinate){
-          return L.circleMarker(coordinate)
-      },
-    style: function(features) {
-        return {
-          color: "black",
-          // Call the chooseColor function to decide which color to color the circles
-          fillColor: chooseColor(features.properties.mag),
-          fillOpacity: 0.5,
-          radius: (2 ** features.properties.mag),
-          weight: 1.5
-        };
-    },
 
-    onEachFeature: function(features, layer) {
-      layer.bindPopup("<h1>Magnitude: " + features.properties.mag + "</h1> <hr> <h3>Location: " + features.properties.place + "</h3>")
-    }
-      
-      
-  }).addTo(myMap1);
-  });
+    console.log('in loop')
+
+    console.log(data)
+
+    EarthQuakes = data.features
+
+
+    // Loop through data
+    EarthQuakes.forEach(Earthquake => {
+
+        var coordinates = [Earthquake.geometry.coordinates[1], Earthquake.geometry.coordinates[0]]
+        var magnitude = Earthquake.properties.mag
+        var title = Earthquake.properties.title
+
+
+        L.circle(coordinates, {
+            fillOpacity: 0.75,
+            color: "#b91c35",
+            fillColor: "#b91c35",
+            // Setting our circle's radius equal to the output of our markerSize function
+            // This will make our marker's size proportionate to its population
+            radius: 1000 * 2** magnitude
+          }).bindPopup(`<h1>" ${title} "</h1><br> <h2> Magnitude ${magnitude}`).addTo(myMap);
+
+    })
+
+  })
 
 }
+
 
 // var legend = L.control({position: 'bottomright'});
 
